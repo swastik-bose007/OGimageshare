@@ -1,7 +1,10 @@
-export const list = [
+import { ListItem } from "@/utils/types";
+
+export const list: ListItem[] = [
     {
         id: 1,
         name: "John",
+        description: "A determined individual with a strong work ethic and natural leadership abilities.",
         greed: 3,
         pride: 4,
         envy: 5,
@@ -13,6 +16,7 @@ export const list = [
     {
         id: 2,
         name: "Sarah",
+        description: "An ambitious perfectionist who strives for excellence but struggles with comparing herself to others.",
         greed: 7,
         pride: 8,
         envy: 2,
@@ -24,6 +28,7 @@ export const list = [
     {
         id: 3,
         name: "Michael",
+        description: "A natural leader with a knack for problem-solving and a strong sense of justice.",
         greed: 5,
         pride: 6,
         envy: 8,
@@ -35,6 +40,7 @@ export const list = [
     {
         id: 4,
         name: "Emma",
+        description: "A creative soul with a knack for art and a strong sense of individuality.",
         greed: 4,
         pride: 3,
         envy: 6,
@@ -46,6 +52,7 @@ export const list = [
     {
         id: 5,
         name: "David",
+        description: "An ambitious perfectionist who strives for excellence but struggles with comparing herself to others.",
         greed: 8,
         pride: 5,
         envy: 3,
@@ -57,6 +64,7 @@ export const list = [
     {
         id: 6,
         name: "Sophia",
+        description: "A natural leader with a knack for problem-solving and a strong sense of justice.",
         greed: 6,
         pride: 7,
         envy: 4,
@@ -68,6 +76,7 @@ export const list = [
     {
         id: 7,
         name: "James",
+        description: "A natural leader with a knack for problem-solving and a strong sense of justice.",
         greed: 3,
         pride: 8,
         envy: 5,
@@ -79,6 +88,7 @@ export const list = [
     {
         id: 8,
         name: "Olivia",
+        description: "A creative soul with a knack for art and a strong sense of individuality.",
         greed: 7,
         pride: 4,
         envy: 8,
@@ -90,6 +100,7 @@ export const list = [
     {
         id: 9,
         name: "William",
+        description: "A natural leader with a knack for problem-solving and a strong sense of justice.",
         greed: 5,
         pride: 6,
         envy: 3,
@@ -101,6 +112,7 @@ export const list = [
     {
         id: 10,
         name: "Isabella",
+        description: "A natural leader with a knack for problem-solving and a strong sense of justice.",
         greed: 8,
         pride: 3,
         envy: 6,
@@ -112,6 +124,7 @@ export const list = [
     {
         id: 11,
         name: "Benjamin",
+        description: "A natural leader with a knack for problem-solving and a strong sense of justice.",
         greed: 4,
         pride: 7,
         envy: 2,
@@ -123,6 +136,7 @@ export const list = [
     {
         id: 12,
         name: "Mia",
+        description: "A natural leader with a knack for problem-solving and a strong sense of justice.",
         greed: 6,
         pride: 5,
         envy: 7,
@@ -134,6 +148,7 @@ export const list = [
     {
         id: 13,
         name: "Lucas",
+        description: "A charismatic dreamer who seeks adventure but struggles with commitment and following through on plans.",
         greed: 2,
         pride: 8,
         envy: 4,
@@ -145,6 +160,7 @@ export const list = [
     {
         id: 14,
         name: "Charlotte",
+        description: "A passionate artist with a rebellious spirit, seeking beauty in chaos while battling inner demons.",
         greed: 7,
         pride: 3,
         envy: 8,
