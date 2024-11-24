@@ -13,7 +13,7 @@ const Modal: React.FC = () => {
   if (!selectedItem) return null
 
   const generateImageUrl = () => {
-    const baseImageUrl = "https://ik.imagekit.io/s3ue4qpie/tr:h-1000:l-text,i-";
+    const baseImageUrl = "https://ik.imagekit.io/s3ue4qpie/tr:h-1000";
     const params = [
       selectedItem.pride,
       selectedItem.greed,
@@ -22,7 +22,11 @@ const Modal: React.FC = () => {
       selectedItem.wrath,
       selectedItem.gluttony,
       selectedItem.lust,
-    ].map((val, idx) => `${val},co-FFFFFF,fs-100,lx-${185 + idx * 310},ly-580,l-end`).join(":");
+    ].map((val, idx) => {
+      const xPos = 185 + idx * 310;
+      return `:l-text,i-${val},co-FFFFFF,fs-100,lx-${xPos},ly-580,l-end`;
+    }).join("");
+    
     return `${baseImageUrl}${params}/BAPUJI.png`;
   };
 
