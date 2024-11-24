@@ -2,6 +2,7 @@ import React from 'react'
 import { useAtom } from 'jotai'
 import { modalOpenAtom, selectedItemAtom } from '@/atoms/modalOpen'
 import { list } from '@/data/list'
+import { shareToX, SHARE_IMAGE_URL } from '@/utils/share'
 
 const Modal: React.FC = () => {
   const [isOpen, setIsOpen] = useAtom(modalOpenAtom)
@@ -12,10 +13,34 @@ const Modal: React.FC = () => {
   const selectedItem = list.find(item => item.id === selectedId)
   if (!selectedItem) return null
 
+  const generateImageUrl = () => {
+    const baseImageUrl = "https://ik.imagekit.io/s3ue4qpie/tr:h-1000:l-text,i-";
+    const params = [
+      selectedItem.pride,
+      selectedItem.greed,
+      selectedItem.envy,
+      selectedItem.sloth,
+      selectedItem.wrath,
+      selectedItem.gluttony,
+      selectedItem.lust,
+    ].map((val, idx) => `${val},co-FFFFFF,fs-100,lx-${185 + idx * 310},ly-580,l-end`).join(":");
+    return `${baseImageUrl}${params}/BAPUJI.png`;
+  };
+
+  const shareOnX = () => {
+    const imageUrl = generateImageUrl();
+    const websiteUrl = `${window.location.origin}/?id=${selectedItem.id}`;
+    const tweetText = `${selectedItem.description}\n\nCheck it out here: ${websiteUrl}`;
+    const twitterIntentUrl = `https://x.com/intent/post?text=${encodeURIComponent(
+      tweetText
+    )}&url=${encodeURIComponent(imageUrl)}`;
+
+    window.open(twitterIntentUrl, "_blank");
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white p-8 rounded-lg max-w-2xl w-full mx-4 relative">
-        {/* Close Button */}
         <button 
           onClick={() => setIsOpen(false)}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -24,12 +49,8 @@ const Modal: React.FC = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-
-        {/* Modal Content */}
         <h2 className="text-3xl font-bold mb-4">{selectedItem.name}</h2>
         <p className="text-gray-600 mb-6">{selectedItem.description}</p>
-
-        {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-orange-100 p-4 rounded-lg">
             <p className="text-lg font-semibold">{selectedItem.greed}</p>
@@ -60,6 +81,9 @@ const Modal: React.FC = () => {
             <p className="text-sm text-gray-600">Lust</p>
           </div>
         </div>
+        <button onClick={shareOnX} className='bg-black text-white px-4 py-2 rounded-md mt-4 w-full'>
+            Share on X
+        </button>
       </div>
     </div>
   )
