@@ -2,7 +2,6 @@ import React from 'react'
 import { useAtom } from 'jotai'
 import { modalOpenAtom, selectedItemAtom } from '@/atoms/modalOpen'
 import { list } from '@/data/list'
-import { shareToX, SHARE_IMAGE_URL } from '@/utils/share'
 
 const Modal: React.FC = () => {
   const [isOpen, setIsOpen] = useAtom(modalOpenAtom)
