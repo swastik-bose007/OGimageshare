@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { list } from '@/data/list'
+import { useAtom } from 'jotai'
+import { modalOpenAtom, selectedItemAtom } from '@/atoms/modalOpen'
 
 const ListRender: React.FC = () => {
+  const [, setModalOpen] = useAtom(modalOpenAtom)
+  const [, setSelectedItem] = useAtom(selectedItemAtom)
+
+  
+  const handleItemClick = useCallback((itemId: number) => {
+    setSelectedItem(itemId)
+    setModalOpen(true)
+  }, [setModalOpen, setSelectedItem])
+
   return (
     <div className='grid grid-cols-3 gap-4'>
       {list.map((item) => (
-        <div key={item.id} className="col-span-3 md:col-span-1 bg-orange-500 h-full w-full p-6">
+        <div 
+          key={item.id} 
+          className="col-span-3 md:col-span-1 bg-orange-500 h-full w-full p-6 border-2 border-black cursor-pointer"
+          onClick={() => handleItemClick(item.id)}
+        >
           <h1 className='text-3xl font-semibold text-white'>
             {item.name}
           </h1>
